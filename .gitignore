@@ -13,3 +13,11 @@ run_test_enko.sh
 run_test_koen.sh
 .vscode/
 .DS_Store@SynoResource
+fr2en/_about.txt
+fr2en/fra-eng.zip
+fr2en/fra.txt
+fr2en/best_model_checkpoint.pth
+ko2en/best_model_checkpoint.pth
+ko2en/_about.txt
+ko2en/kor-eng.zip
+ko2en/kor.txt
