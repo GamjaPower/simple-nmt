@@ -28,11 +28,6 @@ os.chdir(current_file_path)
 # if os.path.exists('best_model_checkpoint.pth'): 
 #    os.remove('best_model_checkpoint.pth')
 
-def unicode_to_ascii(s):
-  # 프랑스어 악센트(accent) 삭제
-  # 예시 : 'déjà diné' -> deja dine
-  return ''.join(c for c in unicodedata.normalize('NFD', s) if unicodedata.category(c) != 'Mn')
-
 def preprocess_sentence(sent):
   # 악센트 삭제 함수 호출
   # sent = unicode_to_ascii(sent.lower())
@@ -43,7 +38,7 @@ def preprocess_sentence(sent):
 
   # (a-z, A-Z, ".", "?", "!", ",") 이들을 제외하고는 전부 공백으로 변환합니다.
   # sent = re.sub(r"[^a-zA-Z!.?]+", r" ", sent)
-  # sent = re.sub(r"[^a-zA-Z!.?ㄱ-ㅎ가-힣]+", r" ", sent)
+  sent = re.sub(r"[^a-zA-Z!.?ㄱ-ㅎ가-힣]+", r" ", sent)
 
   # 다수 개의 공백을 하나의 공백으로 치환
   sent = re.sub(r"\s+", " ", sent)
@@ -171,7 +166,7 @@ encoder_input = encoder_input[indices]
 decoder_input = decoder_input[indices]
 decoder_target = decoder_target[indices]
 
-n_of_val = int(num_samples*0.1)
+n_of_val = int(num_samples*0.2)
 print('검증 데이터의 개수 :',n_of_val)
 
 encoder_input_train = encoder_input[:-n_of_val]
